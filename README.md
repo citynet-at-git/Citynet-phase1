@@ -30,6 +30,8 @@ python3 code1/run.py -n [bj|sh|sz|xa|cd|cq] -s [all|demand|supply|inflow|outflow
 ```
 **Parameters**: 
 - `run.py  `parameters: 
+    - `-p`: Path prefix 
+    - `-y`: Output length 
     - `-n`: Abbr. name of city
     - `-s`: Name of service
     - `-m`: Name of model
