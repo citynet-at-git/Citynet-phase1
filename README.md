@@ -28,6 +28,16 @@ python3 code2/run.py -n [bj|sh|sz|xa|cd|cq] -s [all|demand|supply|inflow|outflow
 ```python
 python3 code1/run.py -n [bj|sh|sz|xa|cd|cq] -s [all|demand|supply|inflow|outflow] -m [CNN|LSTM] -l 0.001 -b 8 -e 75 -w 1
 ```
+**Parameters**: 
+- `run.py  `parameters: 
+    - `-n`: Abbr. name of city
+    - `-s`: Name of service
+    - `-m`: Name of model
+    - `-l`: Learning rate
+    - `-b`: Batch size
+    - `-u`: Number of layers
+
+
 
 ### Transfer learning
 
