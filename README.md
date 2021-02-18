@@ -7,18 +7,80 @@ You can download our dataset via
 - https://drive.google.com/file/d/1ywJpHcOcov09l_eMIhzrDkNvj6b4nzJa/view?usp=sharing or 
 - Baiduyun_link (to be updated)
 
+(You may need to settle the path issues by yourself)
+
 ## Run demo code
+
 ### Supervise learning
+
+We put codes for all graph models in folder `code2`, and CNN/LSTM in folder `code1`. 
+
 **GNN model for traffic speed prediction**:
 ```python
 python3 code2/run_traffic.py -n [hk|xa|cd] -m [ha|gat|gcn] -l 0.001 -u 3 -b 16
 ```
-**CNN/LSTM model for taxi service prediction**:
-
 **GNN model for taxi service prediction**:
 ```python
 python3 code2/run.py -n [bj|sh|sz|xa|cd|cq] -s [all|demand|supply|inflow|outflow] -m [gat|gcn] -l 0.001 -u 3 -b 16
 ```
+**CNN/LSTM model for taxi service prediction**:
+
+```python
+python3 code1/run.py -n [bj|sh|sz|xa|cd|cq] -s [all|demand|supply|inflow|outflow] -m [CNN|LSTM] -l 0.001 -b 8 -e 75 -w 1
+```
+
 ### Transfer learning
 
-**Inter-city transfer learning**:
+We put codes for all transfer learning experiments in `code1`. 
+
+**Procedure**:
+
+- First, run
+
+```python
+python3 code1/gen_rt_dict.py -s SOURCE -t TARGET -p PERIOD -m METRIC
+```
+
+to generate the matching dictionary for RegionTrans. 
+
+- Second, train source models (we currently support LSTM only) via
+
+```python
+python3 code1/run.py -n [bj|sh|sz|xa|cd|cq] -s [all|demand|supply|inflow|outflow] -m LSTM -l 0.001 -b 8 -e 75 -w 1
+```
+
+using the hyperparameters you like. 
+
+- Third, run fine tuning via 
+
+```python
+python3 code1/run_transfer.py -n [bj|sh|sz|xa|cd|cq] -s [all|demand|supply|inflow|outflow] -a finetune -t T --source SOURCE --target TARGET --source-path PATH
+```
+
+or run RegionTrans via
+
+```python
+python3 code1/run_transfer.py -n [bj|sh|sz|xa|cd|cq] -s [all|demand|supply|inflow|outflow] -a regiontrans -t T --source SOURCE --target TARGET --source-path PATH --loss-w 0.01 --dictpath DICTPATH
+```
+
+**Parameters**: 
+
+- `gen_rt_dict.py` parameters: 
+    - `-s, -t`: source and target cities, including `beijing, shanghai, shenzhen, chongqing, chengdu, xian`. 
+    - `-m`: the metric for matching, including `poi, poi-cos, corr, dtw`. By default we use `poi`. 
+        - `poi`: inner product of poi vectors
+        - `poi-cos`: cosine similarity of poi vectors
+        - `corr`: Pearson correlation between task time series
+        - `dtw`: dynamic time warping distance between task time series (warning: this may be very slow)
+
+- `run_transfer.py  `parameters: 
+    - `--source, --target`: source and target cities
+    - `-t`: Data amount (in number of days) for the target city
+    - `--source-path`: path for the model trained on source data
+    - `--loss-w`: The loss for region consistency for RegionTrans. By default we use 0.01. 
+    - `--dictpath`: The path for the region matching dictionary for RegionTrans
+
+
+
+
+
