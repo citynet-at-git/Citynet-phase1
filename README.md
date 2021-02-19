@@ -9,6 +9,47 @@ You can download our dataset via
 
 (You may need to settle the path issues by yourself)
 
+## Dataset architecture
+```
+citynet-phase1-data
+│
+└───mask
+│   │   mask_{$cname}.npy               #Spatiotemporal masks to invalidate regions with scarce data in various ML tasks
+│   
+└───poi
+|   │   poi_vector_{$cname}.npy         #Processed POI vectors
+│   
+└───road
+|   │   {$cname}_conn_none.npy          # Region-wise road connectivity
+|   │   {$cname}_conn.npy               # Region-wise road connectivity without road-type as ‘None’
+|   │   {$cname}_road.npy               # Details of all roads in city, including type and corner coordinates
+│   
+└───taxi
+│   └───inflow
+│       │   inflow_arr_{$cname}.npy     # Processed region-based inflow data
+│   └───outflow
+│       │   outflow_arr_{$cname}.npy    # Processed region-based outflow data
+│   └───demand
+│       │   {$cname}demand.npy          # Processed region-based pick-up data
+│   └───supply
+│       │   {$cname}supply.npy          # Processed region-based idle-driving time data
+│   
+└───weather
+|   │   Weather_clean_{$full_cname}.npy # Raw meterology log
+|   │   weather_{$cname}.npy            # Processed city-based weather data
+│   
+└───traffic_speed
+│   └───{$cname}
+│       │   {$cname}_adj.npy            # Adjacency matrix of roads
+│       │   {$cname}_id_arr.npy         # Road-id array
+│       │   {$cname}_speed.npy          # History of road speed
+```
+How to load npy file:
+```python
+import numpy as np
+np.load('fname.npy',allow_pickle=True)
+```
+
 ## Run demo code
 
 ### Supervise learning
