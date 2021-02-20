@@ -5,7 +5,7 @@ This is the open-source repository for paper **CityNet: A Multi-city, Multi-moda
 ## Download data
 You can download our dataset via 
 - https://drive.google.com/file/d/1ywJpHcOcov09l_eMIhzrDkNvj6b4nzJa/view?usp=sharing or 
-- https://pan.baidu.com/s/1Cm-lyV1csZwgN_RQYKBAHg   extract code: city 
+- https://pan.baidu.com/s/1Cm-lyV1csZwgN_RQYKBAHg               (**extract code:** city)
 
 (You may need to settle the path issues by yourself)
 
