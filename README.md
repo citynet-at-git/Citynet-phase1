@@ -1,6 +1,6 @@
 # Citynet-phase1
 
-This is the open-source repository for paper **CityNet: A Multi-city, Multi-modal Dataset for Smart City** for the submission to KDD 2021
+This is the open-source repository for the CityNet dataset
 
 ## Download data
 You can download our dataset via 
