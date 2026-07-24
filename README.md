@@ -1,13 +1,20 @@
 # Citynet-phase1
 
-This is the open-source repository for the CityNet dataset
+This is the open-source repository for the CityNet dataset.
+
+## Repository status
+
+The source code in this repository has been reviewed and lightly maintained for
+the current manuscript submission. This update improves documentation and
+command-line descriptions only; the original algorithms, model structures,
+training procedures, and default experiment settings remain unchanged.
 
 ## Download data
 You can download our dataset via 
 - https://drive.google.com/file/d/1ywJpHcOcov09l_eMIhzrDkNvj6b4nzJa/view?usp=sharing or 
 - https://pan.baidu.com/s/1Cm-lyV1csZwgN_RQYKBAHg               (**access code:** city)
 
-(You may need to settle the path issues by yourself)
+After downloading the dataset, adjust the local path prefix used by the experiment scripts to match your environment.
 
 ## Dataset architecture
 ```
@@ -49,6 +56,13 @@ How to load npy file:
 import numpy as np
 np.load('fname.npy',allow_pickle=True)
 ```
+
+## Environment note
+
+The programs were originally developed with Python, NumPy, SciPy,
+scikit-learn, Matplotlib, and PyTorch. The region-matching utility also uses
+`dtaidistance`. Exact historical package versions were not recorded, so users
+should document the versions used for any new reproduction run.
 
 ## Run demo code
 
