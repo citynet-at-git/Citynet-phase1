@@ -1,3 +1,4 @@
+
 import numpy as np
 import argparse
 from model import *
@@ -10,7 +11,9 @@ import os
 import logging
 
 
-parser = argparse.ArgumentParser()
+parser = argparse.ArgumentParser(
+    description="Run CityNet cross-city transfer-learning experiments."
+)
 
 parser.add_argument('-p','--path_prefix',default='../')
 parser.add_argument('-y','--output_length',default=1)
