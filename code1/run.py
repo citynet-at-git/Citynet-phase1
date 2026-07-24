@@ -1,3 +1,5 @@
+
+
 import numpy as np
 import argparse
 from model import *
@@ -10,7 +12,9 @@ import os
 import logging
 
 
-parser = argparse.ArgumentParser()
+parser = argparse.ArgumentParser(
+    description="Run grid-based CityNet taxi-service experiments."
+)
 
 parser.add_argument('-p','--path_prefix',default='../')
 parser.add_argument('-n','--city_name',default='beijing')
