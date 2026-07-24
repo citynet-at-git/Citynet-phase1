@@ -1,3 +1,4 @@
+
 import numpy as np
 import matplotlib.pyplot as plt
 from dtaidistance import dtw
@@ -6,7 +7,9 @@ import time
 from sklearn.decomposition import PCA
 import argparse
 
-parser = argparse.ArgumentParser()
+parser = argparse.ArgumentParser(
+    description="Generate a cross-city region-matching dictionary."
+)
 parser.add_argument("-s", '--source', help = "Source city")
 parser.add_argument('-t', '--target', help = 'Target city')
 parser.add_argument('-p', '--period', type = int, default = 2, help = 'Time period. Unit is day')
