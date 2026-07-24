@@ -6,7 +6,9 @@ import torch.nn as nn
 import torch.optim as optimizer
 
 
-parser = argparse.ArgumentParser()
+parser = argparse.ArgumentParser(
+    description="Run graph-based CityNet taxi-service experiments."
+)
 
 parser.add_argument('-p','--path_prefix',default='../citynet-phase1-data/')
 parser.add_argument('-n','--city_name',default='bj')
